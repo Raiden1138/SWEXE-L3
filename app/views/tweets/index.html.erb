@@ -1,0 +1,31 @@
+<h1>Twitter</h1>
+<% @tweets.each do |tweet| %>
+<p>
+<%= tweet.message%>
+</p>
+<div hidden>
+<%= s1 = tweet.tdate-Time.now %>
+<%= s = s1*-1 %>
+<%= m = s/60 %>
+<%= h = m/60 %>
+<%= d = h/24 %>
+<%= s2 = s%60 %>
+<%= m2 = m%60 %>
+<%= h2 = h%24 %>
+</div>
+<p>
+<%= d.to_i%><%= '日'%>
+<%= h2.to_i%><%= '時'%>
+<%= m2.to_i%><%= '分'%>
+<%= s2.to_i%><%= '秒前'%>
+</p>
+<p>
+<%= link_to '削除', "/tweets/#{tweet.id}", method: :delete %>
+<%= link_to '表示', "/tweets/#{tweet.id}" %>
+<%= link_to '編集', "/tweets/#{tweet.id}/edit" %>
+</p>
+<% end %>
+<%= flash[:message] %>
+<p>
+<%= link_to '投稿', '/tweets/new' %>
+</p>

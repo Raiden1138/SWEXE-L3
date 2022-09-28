@@ -1,0 +1,5 @@
+<%= form_for @tweet do |f| %>
+  <%= f.label :message, 'ツイート' %>
+  <%= f.text_area :message %>
+  <%= f.submit '登録' %>
+<% end %>
